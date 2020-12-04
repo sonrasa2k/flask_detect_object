@@ -1,0 +1,43 @@
+<html>
+	<head>
+
+	</head>
+	<body style="text-align: center;background-color: aqua">
+			<h1 style="color: crimson">Nhận Diện và Đếm Số Vật Thể Qua Ảnh</h1>
+			<img style="width: 400px;height: 300px" src="https://miro.medium.com/max/3520/1*aFeEgXtb0ar-Zrxujmu1oA.png">
+			<h2>Chọn Ảnh Để Thực Hiện</h2>
+			<p>
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+				<ul class=flashes>
+				{% for message in messages %}
+				  <li>{{ message }}</li>
+				{% endfor %}
+				</ul>
+			  {% endif %}
+			{% endwith %}
+			</p>
+			{% if filename %}
+			<div>
+				<img style="width:500px;height: 500px" src="{{ url_for('display_image', filename=filename) }}">
+			</div>
+			{% endif %}
+
+			<form method="post" action="/" enctype="multipart/form-data">
+			<dl>
+				<p>
+					<input type="file" name="file" autocomplete="off" required>
+				</p>
+			</dl>
+			<p>
+				<input  style="background-color: deeppink" type="submit" value="Submit">
+			</p>
+			</form>
+			<!-- For loop logic of jinja template -->
+			<p style="color: red;font-size: 20px">Danh Sách Các Vật Thể Trong Ảnh : </p>
+			{% for each in foobar %}
+			{{ each }}
+			{% endfor %}
+	</body>
+
+</html>
